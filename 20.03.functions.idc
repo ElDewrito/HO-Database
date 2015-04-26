@@ -94,8 +94,71 @@ static main()
 
 	nameFunction(0x525B50, "FS_saved_game_files_create_saved_game_file_reference");
 
+	nameFunction(0x42EF60, "Network_get_unique_player_name");
+	nameFunction(0x42F1F0, "Network_set_machine_name");
+	nameFunction(0x4300F0, "Network_netdebug_process_next_task");
+	nameFunction(0x42FF70, "Network_netdebug_process_file_upload");
+	nameFunction(0x430470, "Network_upload_synchronous");
+	nameFunction(0x42F5A0, "Network_build_sessionid_time_segment");
+	nameFunction(0x4306C0, "Network_transport_global_update");
+	nameFunction(0x430820, "Network_transport_startup");
+	nameFunction(0x430F60, "Network_transport_secure_key_create");
+	nameFunction(0x430CF0, "Network_transport_secure_address_resolve");
+
+	nameFunction(0x4322A0, "Network_c_online_lsp_manager::update_online_status");
+	nameFunction(0x432400, "Network_c_online_lsp_manager::update_online_status_2");
+	nameFunction(0x431440, "Network_c_online_lsp_manager__acquire_server");
+	nameFunction(0x431C40, "Network_c_online_lsp_manager__go_into_crash_mode");
+
+	nameFunction(0x433160, "Network_c_http_client__do_work");
+	nameFunction(0x433CF0, "Network_c_http_client__start_connect");
+	nameFunction(0x433DE0, "Network_c_http_client__start_connect_2");
+	nameFunction(0x4339C0, "Network_c_http_client__send_data");
+	nameFunction(0x433760, "Network_c_http_client__receive_data");
+
+	nameFunction(0x4341F0, "Network_transport_endpoint_set_create");
+	nameFunction(0x4342D0, "Network_transport_endpoint_set_poll");
+
+	nameFunction(0x439BA0, "Network_squad_session_set_maximum_player_count");
+	nameFunction(0x439390, "Network_squad_session_request_campaign_quit");
+	nameFunction(0x439960, "Network_squad_session_set_hopper_statistics");
+	nameFunction(0x438640, "Network_squad_session_delegate_leadership");
+	nameFunction(0x438780, "Network_squad_session_end_game");
+	nameFunction(0x437D60, "Network_squad_session_boot_player");
+
+	nameFunction(0x4365D0, "Network_session_interface_handle_message");
+	nameFunction(0x436000, "Network_session_interface_add_local_user");
+	nameFunction(0x436810, "Network_session_interface_remove_local_user");
+	nameFunction(0x436B30, "Network_session_interface_set_local_user_state");
+	nameFunction(0x436B70, "Network_session_interface_set_local_user_xuid");
+	nameFunction(0x436A60, "Network_session_interface_set_local_user_override_hopper_directory");
+	nameFunction(0x436960, "Network_session_interface_set_live_service_qos");
+	nameFunction(0x436CF0, "Network_session_interface_update_local_state");
+	nameFunction(0x437020, "Network_session_interface_update_session");
+	nameFunction(0x4375D0, "Network_session_update_peer_properties");
+	nameFunction(0x437390, "Network_session_update_local_specific_parameters");
+	nameFunction(0x437CE0, "Network_session_update_user_removal");
+	nameFunction(0x437B30, "Network_session_update_user_properties");
+
 	nameFunction(0x43BAB0, "Network_c_network_link__initialize_link");
 	nameFunction(0x43B6F0, "Network_c_network_link__create_endpoint");
+	nameFunction(0x43C250, "Network_c_network_link__send_out_of_band");
+	nameFunction(0x43C370, "Network_c_network_link__send_packet_internal");
+	nameFunction(0x43B820, "Network_c_network_link__decode_packet");
+	nameFunction(0x43BC70, "Network_c_network_link__read_data_immediate");
+	nameFunction(0x43BEC0, "Network_c_network_link__read_data_immediate_2");
+	nameFunction(0x43C150, "Network_c_network_link__send_data_immediate");
+
+	nameFunction(0x43F860, "Network_transport_address_valid");
+	nameFunction(0x43FDF0, "Network_transport_endpoint_create");
+	nameFunction(0x43F980, "Network_get_platform_socket_option");
+
+	nameFunction(0x43FF80, "Network_transport_endpoint_get_option_value");
+	nameFunction(0x440520, "Network_transport_endpoint_set_option_value");
+	nameFunction(0x440470, "Network_transport_endpoint_set_blocking");
+	nameFunction(0x43FB60, "Network_transport_endpoint_async_is_connected");
+	nameFunction(0x440000, "Network_transport_endpoint_get_socket_address");
+	nameFunction(0x440120, "Network_transport_endpoint_get_transport_address"); // on line 169 of 1515....
 
 	nameFunction(0x483DE0, "Network_c_network_message_gateway__initialize_gateway");
 
@@ -237,7 +300,6 @@ static main()
 	nameFunction(0x456170, "Network_c_network_session_parameter_game_variant__request_change");
 	nameFunction(0x456220, "Network_c_network_session_parameter_game_variant__set");
 
-	nameFunction(0x431C40, "Network_c_online_lsp_manager__go_into_crash_mode");
 
 	nameFunction(0x4D26C0, "Network_Properties_ClearRegisteredProperties");
 	nameFunction(0x4DB5F0, "Network_Properties_RegisterAll");
@@ -260,9 +322,6 @@ static main()
 	nameFunction(0x47EEA0, "Network_network_join_update");
 	nameFunction(0x454930, "Network_network_life_cycle_create_local_squad");
 	nameFunction(0x454B40, "Network_network_life_cycle_end");
-	nameFunction(0x436CF0, "Network_network_session_interface_update_local_state");
-	nameFunction(0x4306C0, "Network_transport_global_update");
-	nameFunction(0x430CF0, "Network_transport_secure_address_resolve");
 
 	nameFunction(0x47FF50, "Network_Packets_ClearRegisteredPackets");
 	nameFunction(0x4801B0, "Network_Packets_Register");
