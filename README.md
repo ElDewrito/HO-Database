@@ -5,6 +5,7 @@ Usage:
 - Wait for initial autoanalysis to complete
 - Go to File -> Script file...
 - Choose the functions.idc for your HO build
+- (Sublime Text users) You can enable SSL syntax highlighting by using the ssl.tmLanguage.zip
 
 If you find any additional functions feel free to make a pull request!
 
