@@ -38,12 +38,12 @@ static main()
 	nameFunction(0x42E640, "Game_IsAppSapien");
 	nameFunction(0x42E650, "Game_IsAppTool");
 	nameFunction(0x42E600, "Game_IsAppDedicatedServer");
-	
+
 	nameFunction(0x531E90, "Game_IsMapModeMainMenu");
 	nameFunction(0x531C00, "Game_IsMapModeMultiplayer");
 	nameFunction(0x505700, "Game_IsStopped");
 	nameFunction(0x5056D0, "Game_StopGame");
-	
+
 	nameFunction(0xA21950, "Video_GetD3DCreate9Ex_Ptr");
 	nameFunction(0xA218E0, "Video_GetD3DCreate9_Ptr");
 	nameFunction(0x108E7A0, "Video_CallsD3DBeginScene");
@@ -52,13 +52,13 @@ static main()
 	nameFunction(0x591F80, "Video_DrawPanCamText");
 
 	nameFunction(0xA7DCA0, "User_IsProfileAvailable");
-	
+
 	nameFunction(0x60BE60, "Input_GamepadEnabled");
 	nameFunction(0x65EF00, "Input_XInput_Init");
 	nameFunction(0x65EEB0, "Input_XInput_Free");
 	nameFunction(0x512690, "Input_XInput_Update");
 	nameFunction(0x65EF60, "Input_XInput_GetState");
-	
+
 	nameFunction(0x55B410, "Globals_Push");
 	nameFunction(0x55B2E0, "Globals_Pop");
 	nameFunction(0x5A0220, "Globals_AllocateGameMemory_1");
@@ -91,32 +91,152 @@ static main()
 	nameFunction(0x528FB0, "FS_file_create");
 	nameFunction(0x52A220, "FS_file_open");
 	nameFunction(0x52B250, "FS_file_write");
-	
+
+	nameFunction(0x525B50, "FS_saved_game_files_create_saved_game_file_reference");
+
 	nameFunction(0x43BAB0, "Network_c_network_link__initialize_link");
 	nameFunction(0x43B6F0, "Network_c_network_link__create_endpoint");
-	
+
 	nameFunction(0x483DE0, "Network_c_network_message_gateway__initialize_gateway");
-	
+
 	nameFunction(0x45CAB0, "Network_c_network_session__initialize_session");
 	nameFunction(0x45B270, "Network_c_network_session__connect_peer_to_remote_session");
 	nameFunction(0x45B310, "Network_c_network_session__create_host_session");
 	nameFunction(0x45DD20, "Network_c_network_session__peer_request_player_desired_properties_update");
 	nameFunction(0x45B6D0, "Network_c_network_session__create_session_for_remote_join");
 	nameFunction(0x45B960, "Network_c_network_session__destroy_session");
-	
+
 	nameFunction(0x4A5AC0, "Network_c_network_storage_manifest__get");
-	
+
 	nameFunction(0x4474F0, "Network_c_network_observer__observer_channel_send_message");
 	nameFunction(0x445840, "Network_c_network_observer__build_secure_connection");
 	nameFunction(0x4466A0, "Network_c_network_observer__handle_connect_request");
-	
+
 	nameFunction(0x48D220, "Network_c_life_cycle_state_handler__enter");
-	nameFunction(0x4937F0, "Network_c_life_cycle_state_handler_joining__update");
+	nameFunction(0x48D280, "Network_c_life_cycle_state_handler__exit");
+
+	nameFunction(0x48F200, "Network_c_life_cycle_state_handler_none__update");
+	nameFunction(0x48F260, "Network_c_life_cycle_state_handler_none__update_for_state_transition");
+	nameFunction(0x48F180, "Network_c_life_cycle_state_handler_none__enter");
+	nameFunction(0x48F1C0, "Network_c_life_cycle_state_handler_none__exit");
+	nameFunction(0x4547B0, "Network_c_life_cycle_state_handler_none__get_name");
+
+	nameFunction(0x4905F0, "Network_c_life_cycle_state_handler_pre_game__update");
 	nameFunction(0x490680, "Network_c_life_cycle_state_handler_pre_game__update_for_state_transition");
-	
+	nameFunction(0x48F290, "Network_c_life_cycle_state_handler_pre_game__enter");
+	nameFunction(0x48F340, "Network_c_life_cycle_state_handler_pre_game__exit");
+	nameFunction(0x4547D0, "Network_c_life_cycle_state_handler_pre_game__get_name");
+
+	nameFunction(0x490A20, "Network_c_life_cycle_state_handler_matchmaking_select_host__update");
+	nameFunction(0x490AC0, "Network_c_life_cycle_state_handler_matchmaking_select_host__update_for_state_transition");
+	nameFunction(0x490800, "Network_c_life_cycle_state_handler_matchmaking_select_host__enter");
+	nameFunction(0x490850, "Network_c_life_cycle_state_handler_matchmaking_select_host__exit");
+	nameFunction(0x454790, "Network_c_life_cycle_state_handler_matchmaking_select_host__get_name");
+	nameFunction(0x490930, "Network_c_life_cycle_state_handler_matchmaking_select_host__handle_missing_required_session_parameter");
+
+	nameFunction(0x490FB0, "Network_c_life_cycle_state_handler_start_game__update");
+	nameFunction(0x491010, "Network_c_life_cycle_state_handler_start_game__update_for_state_transition");
+	nameFunction(0x490C30, "Network_c_life_cycle_state_handler_start_game__enter");
+	nameFunction(0x490CA0, "Network_c_life_cycle_state_handler_start_game__exit");
+	nameFunction(0x4547E0, "Network_c_life_cycle_state_handler_start_game__get_name");
+
+	nameFunction(0x491270, "Network_c_life_cycle_state_handler_in_match__update");
+	nameFunction(0x491480, "Network_c_life_cycle_state_handler_in_match__update_for_state_transition");
+	nameFunction(0x491080, "Network_c_life_cycle_state_handler_in_match__enter");
+	nameFunction(0x4910E0, "Network_c_life_cycle_state_handler_in_match__exit");
+	nameFunction(0x454700, "Network_c_life_cycle_state_handler_in_match__get_name");
+
+	nameFunction(0x4923E0, "Network_c_life_cycle_state_handler_in_game__update");
+	nameFunction(0x492960, "Network_c_life_cycle_state_handler_in_game__update_for_state_transition");
+	nameFunction(0x4920C0, "Network_c_life_cycle_state_handler_in_game__enter");
+	nameFunction(0x492140, "Network_c_life_cycle_state_handler_in_game__exit");
+	nameFunction(0x4546F0, "Network_c_life_cycle_state_handler_in_game__get_name");
+
+	nameFunction(0x492E10, "Network_c_life_cycle_state_handler_end_game_write_stats__update");
+	nameFunction(0x493170, "Network_c_life_cycle_state_handler_end_game_write_stats__update_for_state_transition");
+	nameFunction(0x492B50, "Network_c_life_cycle_state_handler_end_game_write_stats__enter");
+	nameFunction(0x492C10, "Network_c_life_cycle_state_handler_end_game_write_stats__exit");
+	nameFunction(0x4546D0, "Network_c_life_cycle_state_handler_end_game_write_stats__get_name");
+
+	nameFunction(0x493500, "Network_c_life_cycle_state_handler_leaving__update");
+	nameFunction(0x493610, "Network_c_life_cycle_state_handler_leaving__update_for_state_transition");
+	nameFunction(0x4933E0, "Network_c_life_cycle_state_handler_leaving__enter");
+	nameFunction(0x493460, "Network_c_life_cycle_state_handler_leaving__exit");
+	nameFunction(0x454720, "Network_c_life_cycle_state_handler_leaving__get_name");
+
+	nameFunction(0x4937F0, "Network_c_life_cycle_state_handler_joining__update");
+	nameFunction(0x493890, "Network_c_life_cycle_state_handler_joining__update_for_state_transition");
+	nameFunction(0x493670, "Network_c_life_cycle_state_handler_joining__enter");
+	nameFunction(0x493750, "Network_c_life_cycle_state_handler_joining__exit");
+	nameFunction(0x454710, "Network_c_life_cycle_state_handler_joining__get_name");
+
+	nameFunction(0x4941D0, "Network_c_life_cycle_state_handler_matchmaking_start__update");
+	nameFunction(0x494440, "Network_c_life_cycle_state_handler_matchmaking_start__update_for_state_transition");
+	nameFunction(0x493A50, "Network_c_life_cycle_state_handler_matchmaking_start__enter");
+	nameFunction(0x493C60, "Network_c_life_cycle_state_handler_matchmaking_start__exit");
+	nameFunction(0x4547A0, "Network_c_life_cycle_state_handler_matchmaking_start__get_name");
+	nameFunction(0x494010, "Network_c_life_cycle_state_handler_matchmaking_start__handle_missing_required_session_parameter");
+
+	nameFunction(0x494EF0, "Network_c_life_cycle_state_handler_matchmaking_arbitration__update");
+	nameFunction(0x495450, "Network_c_life_cycle_state_handler_matchmaking_arbitration__update_for_state_transition");
+	nameFunction(0x4946E0, "Network_c_life_cycle_state_handler_matchmaking_arbitration__enter");
+	nameFunction(0x4947E0, "Network_c_life_cycle_state_handler_matchmaking_arbitration__exit");
+	nameFunction(0x454730, "Network_c_life_cycle_state_handler_matchmaking_arbitration__get_name");
+	nameFunction(0x494960, "Network_c_life_cycle_state_handler_matchmaking_arbitration__handle_missing_required_session_parameter");
+
+	nameFunction(0x495AB0, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__update");
+	nameFunction(0x495AC0, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__update_for_state_transition");
+	nameFunction(0x495A10, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__enter");
+	nameFunction(0x495A40, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__exit");
+	nameFunction(0x454770, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__get_name");
+	nameFunction(0x495A60, "Network_c_life_cycle_state_handler_matchmaking_find_match_client__handle_missing_required_session_parameter");
+
+	nameFunction(0x495E20, "Network_c_life_cycle_state_handler_matchmaking_find_match__update");
+	nameFunction(0x495EA0, "Network_c_life_cycle_state_handler_matchmaking_find_match__update_for_state_transition");
+	nameFunction(0x495B60, "Network_c_life_cycle_state_handler_matchmaking_find_match__enter");
+	nameFunction(0x495BB0, "Network_c_life_cycle_state_handler_matchmaking_find_match__exit");
+	nameFunction(0x454760, "Network_c_life_cycle_state_handler_matchmaking_find_match__get_name");
+	nameFunction(0x495D30, "Network_c_life_cycle_state_handler_matchmaking_find_match__handle_missing_required_session_parameter");
+
+	nameFunction(0x496860, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__update");
+	nameFunction(0x496910, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__update_for_state_transition");
+	nameFunction(0x4963D0, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__enter");
+	nameFunction(0x496490, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__exit");
+	nameFunction(0x454750, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__get_name");
+	nameFunction(0x496740, "Network_c_life_cycle_state_handler_matchmaking_find_and_assemble_match__handle_missing_required_session_parameter");
+
+	nameFunction(0x497D80, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__update");
+	nameFunction(0x498130, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__update_for_state_transition");
+	nameFunction(0x497280, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__enter");
+	nameFunction(0x497370, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__exit");
+	nameFunction(0x454740, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__get_name");
+	nameFunction(0x497920, "Network_c_life_cycle_state_handler_matchmaking_assemble_match__handle_missing_required_session_parameter");
+
+	nameFunction(0x498A20, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__update");
+	nameFunction(0x498C70, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__update_for_state_transition");
+	nameFunction(0x4983C0, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__enter");
+	nameFunction(0x498450, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__exit");
+	nameFunction(0x454780, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__get_name");
+	nameFunction(0x498800, "Network_c_life_cycle_state_handler_matchmaking_prepare_map__handle_missing_required_session_parameter");
+
+	nameFunction(0x499840, "Network_c_life_cycle_state_handler_end_match_write_stats__update");
+	nameFunction(0x499B60, "Network_c_life_cycle_state_handler_end_match_write_stats__update_for_state_transition");
+	nameFunction(0x499630, "Network_c_life_cycle_state_handler_end_match_write_stats__enter");
+	nameFunction(0x499680, "Network_c_life_cycle_state_handler_end_match_write_stats__exit");
+	nameFunction(0x4546E0, "Network_c_life_cycle_state_handler_end_match_write_stats__get_name");
+
+	nameFunction(0x49A680, "Network_c_life_cycle_state_handler_post_match__update");
+	nameFunction(0x49A7C0, "Network_c_life_cycle_state_handler_post_match__update_for_state_transition");
+	nameFunction(0x499D70, "Network_c_life_cycle_state_handler_post_match__enter");
+	nameFunction(0x499DE0, "Network_c_life_cycle_state_handler_post_match__exit");
+	nameFunction(0x4547C0, "Network_c_life_cycle_state_handler_post_match__get_name");
+	nameFunction(0x49A3D0, "Network_c_life_cycle_state_handler_post_match__handle_missing_required_session_parameter");
+
+	nameFunction(0x48E920, "Network_c_life_cycle_state_manager__update_handle_session_states");
+
 	nameFunction(0x456170, "Network_c_network_session_parameter_game_variant__request_change");
 	nameFunction(0x456220, "Network_c_network_session_parameter_game_variant__set");
-	
+
 	nameFunction(0x431C40, "Network_c_online_lsp_manager__go_into_crash_mode");
 
 	nameFunction(0x4D26C0, "Network_Properties_ClearRegisteredProperties");
@@ -125,7 +245,7 @@ static main()
 	nameFunction(0x450890, "Network_PlayerProperties_Apply");
 	nameFunction(0x4433C0, "Network_PlayerProperties_Serialize");
 	nameFunction(0x4432E0, "Network_PlayerProperties_Deserialize");
-	
+
 	nameFunction(0xD858D0, "Network_DebugLog");
 	nameFunction(0x442A90, "Network_IsConnectedToLive");
 	nameFunction(0x442BB0, "Network_SetIsConnectedToLive");
@@ -156,26 +276,9 @@ static main()
 	nameFunction(0x4E0EF0, "Network_Packets_EndGame_RegisterAll");
 	nameFunction(0x4E1000, "Network_Packets_Test_RegisterAll");
 	nameFunction(0x482040, "Network_Packets_InitPacket");
-	
-	nameFunction(0x4546D0, "Network_State_EndGameWriteStats_GetName");
-	nameFunction(0x4546E0, "Network_State_EndMatchWriteStats_GetName");
-	nameFunction(0x4546F0, "Network_State_InGame_GetName");
-	nameFunction(0x454700, "Network_State_InMatch_GetName");
-	nameFunction(0x454710, "Network_State_Joining_GetName");
-	nameFunction(0x454720, "Network_State_Leaving_GetName");
-	nameFunction(0x454730, "Network_State_MatchmakingArbitration_GetName");
-	nameFunction(0x454740, "Network_State_MatchmakingAssembleMatch_GetName");
-	nameFunction(0x454750, "Network_State_MatchmakingFindAndAssembleMatch_GetName");
-	nameFunction(0x454760, "Network_State_MatchmakingFindMatch_GetName");
-	nameFunction(0x454770, "Network_State_MatchmakingFindMatchClient_GetName");
-	nameFunction(0x454780, "Network_State_MatchmakingPrepareMap_GetName");
-	nameFunction(0x454790, "Network_State_MatchmakingSelectHost_GetName");
-	nameFunction(0x4547A0, "Network_State_MatchmakingStart_GetName");
-	nameFunction(0x4547B0, "Network_State_None_GetName");
-	nameFunction(0x4547C0, "Network_State_PostMatch_GetName");
-	nameFunction(0x4547D0, "Network_State_Pregame_GetName");
-	nameFunction(0x4547E0, "Network_State_StartGame_GetName");
-	
+
+	nameFunction(0x48DE50, "Network_State_SetCurrentStateIdx");
+
 	nameFunction(0x430B60, "Network_XnAddrToInAddr_jmp");
 	nameFunction(0x52D840, "Network_XnAddrToInAddr");
 	nameFunction(0x430F30, "Network_InAddrToXnAddr_jmp");
@@ -200,7 +303,7 @@ static main()
 	nameFunction(0x4E19D0, "VKeyboard_SetKeyboardTitle");
 	nameFunction(0x4E19B0, "VKeyboard_SetKeyboardDescription");
 	nameFunction(0x5A8F40, "VKeyboard_ShowKeyboard");
-	
+
 	nameFunction(0x65F840, "Camera_FirstPerson_Func");
 	nameFunction(0x7293F2, "Camera_ThirdPerson_Func");
 
@@ -216,10 +319,10 @@ static main()
 	nameFunction(0xF384A0, "SSL_CalledAtCallbackEnd");
 	nameFunction(0xF38D90, "SSL_CalledAtCallbackStart");
 	nameFunction(0xD87130, "SSL_Alloc");
-	
+
 	nameFunction(0x8E0D00, "JSON_GetObjectAsArray");
 	nameFunction(0x8E3340, "JSON_GetObjectAsNumber");
-	
+
 	nameFunction(0x42CB10, "Frost_DebugLog");
 	nameFunction(0x425E00, "Frost_Finish2");
 	nameFunction(0x428310, "Frost_Finish2_Unused");
