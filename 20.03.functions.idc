@@ -23,6 +23,9 @@ static nameLocal(offset, location, name)
 static main()
 {
 	gameTimeFunctions();	
+	hsScriptFunctions();
+	havokFunctions();
+	cameraFunctions();
 	
 	nameFunction(0x5FFDE0, "Game_GetConfigValue");
 	nameFunction(0x52FDC0, "Game_GetLanguageNameFromIdx");
@@ -268,4 +271,42 @@ static gameTimeFunctions()
 	nameFunction(0x564FA0, "Game_Time_IsPaused");
 	nameFunction(0x564FE0, "Game_Time_SetMatchTicksElapsed");
 	nameFunction(0x5651D0, "Game_Time_SetSpeed");
+	
+	nameFunction(0x5A40F0, "Game_Time_GetSecondsFromFrameCount");
+	nameLocal(0x5A40F0, "[bp+0X8]", "frames");
+	
+	nameFunction(0xA1FCD0, "Game_Time_GetTicksPerSecondConstant");
+}
+
+static hsScriptFunctions()
+{
+	MakeName(0x18ED378,	"hs_script_info_vtable");
+	nameFunction(0x5972F0, "Scripts_Prologue");
+	nameFunction(0x5974E0, "Scripts_Epilogue");
+}
+
+static havokFunctions()
+{
+	MakeName(0x2443FFC,	"Havok_hkpWorld");
+
+	nameFunction(0x5C4FC0, "Havok_GetStats");
+	nameFunction(0x5C5EF0, "Havok_InitializeWorld");
+	nameFunction(0x5C6360, "Havok_UpdateTickCount");
+	nameFunction(0x7610B0, "Havok_hkCriticalSection");
+	nameFunction(0xC310F0, "Havok_hkErrStream");
+	nameFunction(0xC31140, "Havok_hkError");
+	nameFunction(0xC31450, "Havok_hkOstream::Operator");
+	nameFunction(0xC318E0, "Havok_hkOstream::Destructor");
+	nameFunction(0xC45760, "Havok_hkCollisionDispatcher::Constructor");
+	nameFunction(0xC45AD0, "Havok_hkCollisionDispatcher::DebugPrintTable");
+	nameFunction(0xC59D70, "Havok_hkGetShapeTypeName");
+	nameFunction(0xC742B0, "Havok_hkpNullAgent::createNullAgent");
+	nameFunction(0xC7C0E0, "Havok_hkpWorld::hkpWorld");
+	nameFunction(0xC97B20, "Havok_hkpSimpleConstraintContactMgr::Factory");
+}
+
+static cameraFunctions()
+{
+	nameFunction(0x614300, "Camera_Update");
+	nameLocal(0x614300, "[bp+0X8]", "playerIndex");
 }
