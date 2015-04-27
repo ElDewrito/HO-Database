@@ -13,8 +13,20 @@ static nameFunction(offset, name)
 	return offset;
 }
 
+static nameLocal(offset, location, name)
+{
+	// TODO: error handling
+	MakeLocal(offset, BADADDR, location, name);
+}
+
+
 static main()
 {
+	gameTimeFunctions();	
+	hsScriptFunctions();
+	havokFunctions();
+	cameraFunctions();
+	
 	nameFunction(0x5FFDE0, "Game_GetConfigValue");
 	nameFunction(0x52FDC0, "Game_GetLanguageNameFromIdx");
 	nameFunction(0x837110, "Game_ProcessAccountInfo");
@@ -392,4 +404,71 @@ static main()
 	nameFunction(0x4283F0, "Frost_SetCharName2");
 	nameFunction(0x428560, "Frost_SetCharNameW");
 	nameFunction(0x425E60, "Frost_SetUserName");
+}
+
+static gameTimeFunctions()
+{
+	nameFunction(0x552100, "Game_Time_UpdateCountdownTimer");
+	nameLocal(0x552100, "[bp+0X8]", "playerIndex");
+	nameLocal(0x552100, "[bp+0XC]", "ticksLeft");
+
+	nameFunction(0x564B40, "Game_Time_GetIntTickCountFromSeconds");
+	nameLocal(0x564B40, "[bp+0X8]", "seconds");
+	
+	nameFunction(0x564B70, "Game_Time_GetFloatTickCountFromSeconds");
+	nameLocal(0x564B70, "[bp+0X8]", "seconds");
+	
+	nameFunction(0x564C20, "Game_Time_GetSecondsPerTick");
+	nameFunction(0x564C20, "Game_Time_GetTicksPerSecond");
+	
+	nameFunction(0x564C60, "Game_Time_GetSecondsFromTickCount");
+	nameLocal(0x564C60, "[bp+0X8]", "ticks");
+	
+	nameFunction(0x564C90, "Game_Time_IncreaseTickCount");
+	nameFunction(0x564D50, "Game_Time_GetMatchTicksElapsed");
+	nameFunction(0x564E60, "Game_Time_GetMatchSecondsElapsed");
+	nameFunction(0x564EB0, "Game_Time_GetSpeed");
+	nameFunction(0x564ED0, "Game_Time_AllocateGlobals");
+	nameFunction(0x564F30, "Game_Time_InitializeGlobals");
+	nameFunction(0x564FA0, "Game_Time_IsPaused");
+	nameFunction(0x564FE0, "Game_Time_SetMatchTicksElapsed");
+	nameFunction(0x5651D0, "Game_Time_SetSpeed");
+	
+	nameFunction(0x5A40F0, "Game_Time_GetSecondsFromFrameCount");
+	nameLocal(0x5A40F0, "[bp+0X8]", "frames");
+	
+	nameFunction(0xA1FCD0, "Game_Time_GetTicksPerSecondConstant");
+}
+
+static hsScriptFunctions()
+{
+	MakeName(0x18ED378,	"hs_script_info_vtable");
+	nameFunction(0x5972F0, "Scripts_Prologue");
+	nameFunction(0x5974E0, "Scripts_Epilogue");
+}
+
+static havokFunctions()
+{
+	MakeName(0x2443FFC,	"Havok_hkpWorld");
+
+	nameFunction(0x5C4FC0, "Havok_GetStats");
+	nameFunction(0x5C5EF0, "Havok_InitializeWorld");
+	nameFunction(0x5C6360, "Havok_UpdateTickCount");
+	nameFunction(0x7610B0, "Havok_hkCriticalSection");
+	nameFunction(0xC310F0, "Havok_hkErrStream");
+	nameFunction(0xC31140, "Havok_hkError");
+	nameFunction(0xC31450, "Havok_hkOstream::Operator");
+	nameFunction(0xC318E0, "Havok_hkOstream::Destructor");
+	nameFunction(0xC45760, "Havok_hkCollisionDispatcher::Constructor");
+	nameFunction(0xC45AD0, "Havok_hkCollisionDispatcher::DebugPrintTable");
+	nameFunction(0xC59D70, "Havok_hkGetShapeTypeName");
+	nameFunction(0xC742B0, "Havok_hkpNullAgent::createNullAgent");
+	nameFunction(0xC7C0E0, "Havok_hkpWorld::hkpWorld");
+	nameFunction(0xC97B20, "Havok_hkpSimpleConstraintContactMgr::Factory");
+}
+
+static cameraFunctions()
+{
+	nameFunction(0x614300, "Camera_Update");
+	nameLocal(0x614300, "[bp+0X8]", "playerIndex");
 }
