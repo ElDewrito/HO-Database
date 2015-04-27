@@ -173,6 +173,8 @@ static nameGlobals()
 	nameVariable(0x224A498, "g_NetworkPacketHandler");
 	nameVariable(0x224A4AC, "g_NetworkPropertiesHandler");
 	nameVariable(0x224A490, "g_NetworkPropertiesHandler_ptr");
+	
+	nameVariable(0x18B49E4, "g_Input_MaxVerticalAngle");
 }
 
 static gameTimeFunctions()
