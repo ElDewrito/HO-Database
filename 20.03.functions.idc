@@ -39,6 +39,7 @@ static main()
 	nameFunction(0x5FFDE0, "Game_GetConfigValue");
 	nameFunction(0x52FDC0, "Game_GetLanguageNameFromIdx");
 	nameFunction(0x837110, "Game_ProcessAccountInfo");
+	nameFunction(0x837360, "Game_VerifyAccountAndLoadAnticheat");
 	nameFunction(0x42EB10, "Game_Startup");
 	nameFunction(0x600630, "Game_Startup_DoAppOnlyStuff");
 	nameFunction(0x506FB0, "Game_DebugLog");
@@ -60,10 +61,13 @@ static main()
 	nameFunction(0x42E650, "Game_IsAppTool");
 	nameFunction(0x42E600, "Game_IsAppDedicatedServer");
 
+	nameFunction(0x54C110, "Game_Maps_InitMapInfo");
 	nameFunction(0x531E90, "Game_IsMapModeMainMenu");
 	nameFunction(0x531C00, "Game_IsMapModeMultiplayer");
 	nameFunction(0x505700, "Game_IsStopped");
 	nameFunction(0x5056D0, "Game_StopGame");
+	
+	nameFunction(0x503370, "Tags_GetTagAddress");
 
 	nameFunction(0xA21950, "Video_GetD3DCreate9Ex_Ptr");
 	nameFunction(0xA218E0, "Video_GetD3DCreate9_Ptr");
@@ -74,11 +78,21 @@ static main()
 
 	nameFunction(0xA7DCA0, "User_IsProfileAvailable");
 
-	nameFunction(0x60BE60, "Input_GamepadEnabled");
+	nameFunction(0x60BE60, "Input_IsGamepadEnabled");
+	nameFunction(0x60D7B0, "Input_SetsGamepadEnabledFlag");
 	nameFunction(0x65EF00, "Input_XInput_Init");
 	nameFunction(0x65EEB0, "Input_XInput_Free");
 	nameFunction(0x512690, "Input_XInput_Update");
 	nameFunction(0x65EF60, "Input_XInput_GetState");
+	nameFunction(0x512350, "Input_RawInputHandler");
+	nameFunction(0x5119F0, "Input_GetMouseData");
+	nameFunction(0x5D3430, "Input_UpdatePlayerView");
+	nameFunction(0x50BA10, "Input_GetMouseAccelValue");
+	nameFunction(0x50DC50, "Input_SetMouseAccelValue");
+	nameFunction(0x50BB10, "Input_GetYAxisInverted");
+	nameFunction(0x50DD70, "Input_SetYAxisInverted");
+	nameFunction(0x50BA90, "Input_GetYAxisInvertedAlt");
+	nameFunction(0x50DCE0, "Input_SetYAxisInvertedAlt");
 
 	nameFunction(0x55B410, "Globals_Push");
 	nameFunction(0x55B2E0, "Globals_Pop");
@@ -112,12 +126,16 @@ static main()
 	nameFunction(0x528FB0, "FS_file_create");
 	nameFunction(0x52A220, "FS_file_open");
 	nameFunction(0x52B250, "FS_file_write");
+	nameFunction(0x529B00, "FS_file_get_size");
 
 	nameFunction(0x525B50, "FS_saved_game_files_create_saved_game_file_reference");
 
 	nameFunction(0x4ECBD0, "Util_Utf16StrNotEmpty");
 	nameFunction(0x401760, "Util_Utf16Concat");
 	nameFunction(0x4ECCD0, "Util_Utf16Strcpy");
+	nameFunction(0x4EC4C0, "Util_AsciiToUtf16");
+	nameFunction(0x401610, "Util_strcpy_alt");
+	nameFunction(0x401870, "Util_strlen_alt");
 
 	nameFunction(0xADF6E0, "UI_MainMenu_Update");
 	nameFunction(0xAC34A0, "UI_Lobby_InitNetworkSelection");
@@ -125,8 +143,14 @@ static main()
 	nameFunction(0xAB1BA0, "UI_ButtonPressHandler");
 	nameFunction(0xA92780, "UI_InitById");
 	nameFunction(0xABA240, "UI_ToggleVisibility");
-	nameFunction(0xAABFD0, "UI_IsMenuIDValid");
-	nameFunction(0xA926A0, "UI_InGame_InitScreenshotUploadingBox");
+	nameFunction(0xAABFD0, "UI_IsDialogIDValid");
+	nameFunction(0xA926A0, "UI_InGame_ShowScreenshotUploadingDialog");
+	nameFunction(0xAE1CC0, "UI_Forge_ShowMenuDialog");
+	nameFunction(0xA92740, "UI_ShowMsgBoxDialog");
+	nameFunction(0xA93450, "UI_Dialog_QueueLoad");
+	nameFunction(0xB01240, "UI_Lobby_StartGameButton_GetStringId");
+	nameFunction(0xB22A10, "UI_Lobby_StartGameButton_GetText");
+	nameFunction(0xAC3F60, "UI_Lobby_LoadMapImage");
 
 	nameFunction(0x4E1840, "VKeyboard_CreateKeyboard");
 	nameFunction(0x4E19A0, "VKeyboard_SetDefaultValue");
@@ -163,6 +187,11 @@ static main()
 	nameFunction(0x4283F0, "Frost_SetCharName2");
 	nameFunction(0x428560, "Frost_SetCharNameW");
 	nameFunction(0x425E60, "Frost_SetUserName");
+	
+	nameFunction(0x463540, "BLF_VerifyHeader");
+	nameFunction(0xAC3F60, "BLF_LoadBlf");
+	
+	nameFunction(0xDFC730, "Sound_DebugPrint");
 }
 
 static nameGlobals()
@@ -174,7 +203,34 @@ static nameGlobals()
 	nameVariable(0x224A4AC, "g_NetworkPropertiesHandler");
 	nameVariable(0x224A490, "g_NetworkPropertiesHandler_ptr");
 	
-	nameVariable(0x18B49E4, "g_Input_MaxVerticalAngle");
+	nameVariable(0x18B49E4, "g_InputMaxVerticalAngle");
+	nameVariable(0x2301DB4, "g_InputIsYAxisInverted");
+	
+	nameVariable(0x238E6BC, "g_InputMouseButtonsPressed");
+
+	nameVariable(0x238E6C0, "g_InputMouseX");
+	nameVariable(0x238E6C4, "g_InputMouseY");
+	nameVariable(0x238E6C8, "g_InputMouseWheel");
+
+	nameVariable(0x238E6A0, "g_InputMouseX_WithSensitivity");
+	nameVariable(0x238E6A4, "g_InputMouseY_WithSensitivity");
+	nameVariable(0x238E6A8, "g_InputMouseWheel_WithSensitivity");
+
+	nameVariable(0x238E6F8, "g_InputMouseX_Sensitivity_maybe");
+	nameVariable(0x238E6FC, "g_InputMouseY_Sensitivity_maybe");
+	nameVariable(0x238E700, "g_InputMouseWheel_Sensitivity_maybe");
+
+	nameVariable(0x238E704, "g_InputMouseX_Sensitivity_2_maybe");
+	nameVariable(0x238E708, "g_InputMouseY_Sensitivity_2_maybe");
+	nameVariable(0x238E70C, "g_InputMouseWheel_Sensitivity_2_maybe");
+
+	nameVariable(0x199C014, "g_GameWindowHWND");
+	
+	nameVariable(0x189E2D4, "g_CampaignsGlobalPtr");
+	nameVariable(0x189E2D8, "g_CampaignLevelsGlobalPtr");
+	nameVariable(0x189E2DC, "g_CampaignInsertionsGlobalPtr");
+	nameVariable(0x189E2E0, "g_MultiplayerLevelsGlobalPtr");
+	
 }
 
 static gameTimeFunctions()
