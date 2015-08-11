@@ -151,16 +151,16 @@ static main()
 	nameFunction(0xB01240, "UI_Lobby_StartGameButton_GetStringId");
 	nameFunction(0xB22A10, "UI_Lobby_StartGameButton_GetText");
 	nameFunction(0xAC3F60, "UI_Lobby_LoadMapImage");
-    nameFunction(0xA935C0, "UI_Input_ButtonPress");
-    nameFunction(0xAB2830, "UI_CloseDialog");
+	nameFunction(0xA935C0, "UI_Input_ButtonPress");
+	nameFunction(0xAB2830, "UI_CloseDialog");
     
-    // ButtonPress is at +0x8C into vftable of classes derived from either c_gui_screen_widget or c_gui_widget
-    nameFunction(0xB03950, "c_gui_screen_pregame_selection::ButtonPress");
-    nameFunction(0xB1F620, "c_start_menu_pane_screen_widget::ButtonPress");
-    nameFunction(0xAE05B0, "c_start_menu_screen_widget::ButtonPress");
-    nameFunction(0xAE7660, "c_main_menu_screen_widget::ButtonPress");
+	// ButtonPress is at +0x8C into vftable of classes derived from either c_gui_screen_widget or c_gui_widget
+	nameFunction(0xB03950, "c_gui_screen_pregame_selection::ButtonPress");
+	nameFunction(0xB1F620, "c_start_menu_pane_screen_widget::ButtonPress");
+	nameFunction(0xAE05B0, "c_start_menu_screen_widget::ButtonPress");
+	nameFunction(0xAE7660, "c_main_menu_screen_widget::ButtonPress");
     
-    nameFunction(0xB89190, "Equipment_GetNumRemainingUses");
+	nameFunction(0xB89190, "Equipment_GetNumRemainingUses");
 
 	nameFunction(0x4E1840, "VKeyboard_CreateKeyboard");
 	nameFunction(0x4E19A0, "VKeyboard_SetDefaultValue");
