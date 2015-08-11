@@ -141,16 +141,26 @@ static main()
 	nameFunction(0xAC34A0, "UI_Lobby_InitNetworkSelection");
 	nameFunction(0xAE2180, "UI_Forge_ButtonPressHandler");
 	nameFunction(0xAB1BA0, "UI_ButtonPressHandler");
-	nameFunction(0xA92780, "UI_InitById");
+	nameFunction(0xA92780, "UI_OpenDialogById_InitMessage");
 	nameFunction(0xABA240, "UI_ToggleVisibility");
 	nameFunction(0xAABFD0, "UI_IsDialogIDValid");
 	nameFunction(0xA926A0, "UI_InGame_ShowScreenshotUploadingDialog");
 	nameFunction(0xAE1CC0, "UI_Forge_ShowMenuDialog");
 	nameFunction(0xA92740, "UI_ShowMsgBoxDialog");
-	nameFunction(0xA93450, "UI_Dialog_QueueLoad");
+	nameFunction(0xA93450, "UI_PostMessage");
 	nameFunction(0xB01240, "UI_Lobby_StartGameButton_GetStringId");
 	nameFunction(0xB22A10, "UI_Lobby_StartGameButton_GetText");
 	nameFunction(0xAC3F60, "UI_Lobby_LoadMapImage");
+    nameFunction(0xA935C0, "UI_Input_ButtonPress");
+    nameFunction(0xAB2830, "UI_CloseDialog");
+    
+    // ButtonPress is at +0x8C into vftable of classes derived from either c_gui_screen_widget or c_gui_widget
+    nameFunction(0xB03950, "c_gui_screen_pregame_selection::ButtonPress");
+    nameFunction(0xB1F620, "c_start_menu_pane_screen_widget::ButtonPress");
+    nameFunction(0xAE05B0, "c_start_menu_screen_widget::ButtonPress");
+    nameFunction(0xAE7660, "c_main_menu_screen_widget::ButtonPress");
+    
+    nameFunction(0xB89190, "Equipment_GetNumRemainingUses");
 
 	nameFunction(0x4E1840, "VKeyboard_CreateKeyboard");
 	nameFunction(0x4E19A0, "VKeyboard_SetDefaultValue");
