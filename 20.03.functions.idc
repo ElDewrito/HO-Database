@@ -35,6 +35,21 @@ static main()
 	cameraFunctions();
 	networkFunctions();
 	nameGlobals();
+    
+	nameFunction(0x5A4430, "Armor_Apply");
+	nameFunction(0xB328F0, "Armor_ApplyColor");
+	nameFunction(0x5A2FA0, "Armor_UpdateColors");
+    
+	nameFunction(0x558570, "BitStream::ReadBit");
+	nameFunction(0x5589A0, "BitStream::ReadBits32");
+	nameFunction(0x559160, "BitStream::ReadBits64");
+	nameFunction(0x559EB0, "BitStream::WriteBits");
+    
+	nameFunction(0x511B60, "Engine_GetKeyTicks");
+	nameFunction(0x511CE0, "Engine_GetKeyMs");
+    
+    nameFunction(0xD874A0, "Scoreboard_Allocate");
+	nameFunction(0xAB4ED0, "UI_Allocate");
 	
 	nameFunction(0x5FFDE0, "Game_GetConfigValue");
 	nameFunction(0x52FDC0, "Game_GetLanguageNameFromIdx");
@@ -66,8 +81,14 @@ static main()
 	nameFunction(0x531C00, "Game_IsMapModeMultiplayer");
 	nameFunction(0x505700, "Game_IsStopped");
 	nameFunction(0x5056D0, "Game_StopGame");
+    
+	nameFunction(0x5336F0, "Game_Tick");
+	nameFunction(0x589C30, "Game_GetLocalPlayerDatumIdx");
+	nameFunction(0x435640, "Game_GetUIGameMode");
+	nameFunction(0x42E6A0, "Game_WndProc");
 	
 	nameFunction(0x503370, "Tags_GetTagAddress");
+	nameFunction(0x719290, "Tags_GetWezrTag");
 
 	nameFunction(0xA21950, "Video_GetD3DCreate9Ex_Ptr");
 	nameFunction(0xA218E0, "Video_GetD3DCreate9_Ptr");
@@ -136,6 +157,8 @@ static main()
 	nameFunction(0x4EC4C0, "Util_AsciiToUtf16");
 	nameFunction(0x401610, "Util_strcpy_alt");
 	nameFunction(0x401870, "Util_strlen_alt");
+	nameFunction(0x521300, "Util_RgbToFloatColor");
+	nameFunction(0x52BD40, "Util_SetFlag");
 
 	nameFunction(0xADF6E0, "UI_MainMenu_Update");
 	nameFunction(0xAC34A0, "UI_Lobby_InitNetworkSelection");
@@ -200,6 +223,15 @@ static main()
 	
 	nameFunction(0x463540, "BLF_VerifyHeader");
 	nameFunction(0xAC3F60, "BLF_LoadBlf");
+    
+	nameFunction(0x573150, "BLF::ParseGameVariant");
+	nameFunction(0x573250, "BLF::ParseMapVariant");
+
+	nameFunction(0x581F70, "MapVariant::Initialize");
+	nameFunction(0xA83AF0, "MapVariant_RequestLoad");
+
+	nameFunction(0x572270, "GameVariant_LoadBuiltInVariant");
+	nameFunction(0x439860, "GameVariant_RequestLoad");
 	
 	nameFunction(0xDFC730, "Sound_DebugPrint");
 }
@@ -541,8 +573,8 @@ static networkFunctions()
 	nameFunction(0x454930, "Network_network_life_cycle_create_local_squad");
 	nameFunction(0x454B40, "Network_network_life_cycle_end");
 
-	nameFunction(0x47FF50, "Network_Packets_ClearRegisteredPackets");
-	nameFunction(0x4801B0, "Network_Packets_Register");
+	nameFunction(0x47FF50, "PacketTable::Clear");
+	nameFunction(0x4801B0, "PacketTable::Register");
 	nameFunction(0x4DC3D0, "Network_Packets_Broadcast_RegisterAll");
 	nameFunction(0x4DC850, "Network_Packets_Handshake_RegisterAll");
 	nameFunction(0x4DD5D0, "Network_Packets_Connection_RegisterAll");
@@ -561,4 +593,16 @@ static networkFunctions()
 	nameFunction(0x430F30, "Network_InAddrToXnAddr_jmp");
 	nameFunction(0x52D970, "Network_InAddrToXnAddr");
 	nameFunction(0x43F6F0, "Network_GetIPStringFromInAddr");
+
+    nameFunction(0x44E690, "SessionMembership::FindFirstPeer");
+	nameFunction(0x44E710, "SessionMembership::FindNextPeer");
+	nameFunction(0x44E860, "SessionMembership::GetChannelPeer");
+	nameFunction(0x52E280, "Membership_GetPeerPlayer");
+    
+	nameFunction(0x450CF0, "SessionParameter::IsAvailable");
+	nameFunction(0x456140, "c_network_session_parameter_game_variant::get");
+	nameFunction(0x459A40, "c_network_session_parameter_session_mode::set");
+    
+	nameFunction(0x447150, "c_network_observer::get_channel_index");
+	nameFunction(0x45D4A0, "c_network_session::leader_request_boot_machine");
 }
